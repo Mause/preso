@@ -1,12 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import version_url from '../version';
+import CodePage from '../CodePage';
+import KnownMount from '../KnownMount';
+import { strip } from '../strip';
 
-import Highlight from 'react-highlight';
-import 'highlight.js/styles/ocean.css';
-
-class SlideTwo extends Component {
+class Slide2 extends KnownMount {
+  constructor(props) {
+    super(props);
+    this.state = { version: null };
+    this.initialise();
+  }
+  async initialise() {
+    const response = await fetch(version_url);
+    let version = await response.text();
+    if (this.mounted) {
+      this.setState({ version: version.trim() });
+    }
+  }
   render() {
-    return <Highlight>{'def foo():\npass'}</Highlight>;
+    const codes = [
+      `"${this.state.version}"`,
+      strip`
+        from datetime import date
+        date.today().isoformat()`,
+      strip`
+        import urlparse
+        repr(urlparse.urlparse('https://parkd.mause.me/index.json'))
+        `,
+    ];
+    return <CodePage codes={codes} />;
   }
 }
 
-export default SlideTwo;
+export default Slide2;

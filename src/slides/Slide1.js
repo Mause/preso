@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
-import { ContentSlide, Slide, Step } from 'react-presents';
-import * as _ from 'underscore';
+import CodePage from '../CodePage';
+import { strip } from '../strip';
 
-import Highlight from 'react-highlight';
-import 'highlight.js/styles/ocean.css';
+const CODES = [
+  strip`
+    def foo():
+        return 'world'
 
-function strip(lines) {
-  lines = lines[0].split('\n');
-  let min = _.min(
-    lines.filter(line => line.trim()).map(line => /^ */.exec(line)[0].length),
-  );
-  return lines
-    .map(line => line.substring(min))
-    .join('\n')
-    .trim();
-}
+    foo()
+    `,
+  strip`
+    def intersect(a, b) :
+        return list(set(a) & set(b))
 
-class SlideOne extends Component {
+    intersect([1, 2, 3], [2, 5, 7])
+    `,
+  'hex(4 + 5)'
+];
+
+class Slide1 extends Component {
   render() {
-    const code = strip`
-        def foo():
-            pass
-        `;
-    return (
-      <ContentSlide>
-        <Step index={0}>
-          <Highlight style={{ fontSize: '30px' }}>{code}</Highlight>
-        </Step>
-      </ContentSlide>
-    );
+    return <CodePage codes={CODES} />;
   }
 }
 
-export default SlideOne;
+export default Slide1;
