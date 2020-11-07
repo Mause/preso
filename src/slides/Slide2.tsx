@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import version_url from '../version';
 import CodePage from '../CodePage';
 import KnownMount from '../KnownMount';
 import { strip } from '../strip';
@@ -10,9 +9,9 @@ const version_url = require('../version');
 interface Slide2State {
   version: string | null;
 }
-interface Slide2Props extends React.Props<Slide2> {};
+interface Slide2Props {};
 
-class Slide2 extends KnownMount {
+class Slide2 extends KnownMount<Slide2Props> {
   state: Slide2State;
 
   constructor(props: Slide2Props) {

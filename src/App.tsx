@@ -20,14 +20,13 @@ import Slide3 from './slides/Slide3';
 import Slide4 from './slides/Slide4';
 const slides = [Slide1, Slide2, Slide3, Slide4];
 
-interface AppProps extends React.Props<App> {}
 interface AppState {
   ready: Boolean;
 }
 
-class App extends KnownMount {
+class App extends KnownMount<{}> {
   state: AppState;
-  constructor(props: AppProps) {
+  constructor(props: {}) {
     super(props);
     this.state = { ready: false };
   }

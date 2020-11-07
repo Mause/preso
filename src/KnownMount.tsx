@@ -1,9 +1,9 @@
 import {Component} from 'react';
 
-class KnownMount extends Component {
+class KnownMount<Props> extends Component<Props> {
   mounted: Boolean;
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props);
     this.mounted = false;
   }
