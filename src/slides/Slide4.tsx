@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Component } from 'react';
 import CodePage from '../CodePage';
 import { strip } from '../strip';
 
-class Slide4 extends Component {
-  render() {
-    const codes = [
-      strip`
+export default function Slide4() {
+  return <CodePage codes={[
+    strip`
         import js
         fetch = js.globals.fetch
         console = js.globals.console
@@ -15,9 +13,5 @@ class Slide4 extends Component {
 
         fetch(url).then(js.Function(lambda res: res.json()))
         `
-    ];
-    return <CodePage codes={codes} />;
-  }
+  ]} />;
 }
-
-export default Slide4;

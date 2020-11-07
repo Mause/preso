@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { Component } from 'react';
 import CodePage from '../CodePage';
 import { strip } from '../strip';
 
-class Slide3 extends Component {
-  render() {
-    const codes = [
-      strip`
+export default function Slide3() {
+  return <CodePage codes={[
+    strip`
         import js
         dir(js)`,
-      strip`
+    strip`
         import js
         import json
 
@@ -18,9 +16,5 @@ class Slide3 extends Component {
         request.send(None);
 
         [request.status, json.loads(str(request.responseText))]`,
-    ];
-    return <CodePage codes={codes} />;
-  }
+  ]} />;
 }
-
-export default Slide3;

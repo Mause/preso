@@ -73,19 +73,14 @@ class CodePage extends Component<CodePageProps> {
 
     this.observable = this.propsUpdates.pipe(
       map(props => props.codes),
-      // tap('1'),
       distinctUntilChanged(_.isEqual),
-      // tap('2'),
       map((codes: Array<string>) =>
         codes
           .map(getNewValueOb)
           .map((obs, idx) => obs.map(value => ({ [`code_${idx}`]: value }))),
       ),
-      // tap('4'),
       mergeAll(), // observable array to observables
-      // tap('5'),
       mergeAll(), // observables to values
-      // tap('6'),
       catchError(error => {
         debugger;
         console.error(error);
