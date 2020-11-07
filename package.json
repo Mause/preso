@@ -38,5 +38,17 @@
     "@types/underscore": "^1.8.8",
     "@types/webpack": "^4.4.0",
     "@types/webpack-env": "^1.13.6"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

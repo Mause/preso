@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
     "outDir": "build/dist",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
-    "lib": ["es6", "dom", "es2015"],
+    "lib": [
+      "es6",
+      "dom",
+      "es2015"
+    ],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
@@ -14,7 +18,15 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "exclude": [
     "node_modules",
@@ -30,7 +42,13 @@
     "webpack",
     "webpack-env"
   ],
-  "paths" :{
-     "*": ["react-presents", "react-presents.d.ts"]
-   }
+  "paths": {
+    "*": [
+      "react-presents",
+      "react-presents.d.ts"
+    ]
+  },
+  "include": [
+    "src"
+  ]
 }
