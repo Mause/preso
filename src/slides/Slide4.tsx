@@ -11,7 +11,7 @@ class Slide4 extends Component {
         fetch = js.globals.fetch
         console = js.globals.console
 
-        url = 'https://api.dev.portal.energy-tec.com.au/graphql?query={version}'
+        url = 'https://api.portal.energy-tec.com.au/graphql?query={version}'
 
         fetch(url).then(js.Function(lambda res: res.json()))
         `
