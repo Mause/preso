@@ -3,9 +3,8 @@ import { Component } from 'react';
 import { ContentSlide, Step } from 'react-presents';
 import Highlight from 'react-highlight';
 import { Columns, Column } from 'bloomer';
-import * as _ from 'underscore';
+import _ from 'underscore';
 import 'bulma/css/bulma.css';
-import * as PropTypes from 'prop-types';
 import { Subject, Observable, Subscription } from 'rxjs';
 import {
   map,
@@ -69,11 +68,10 @@ interface CodePageProps extends React.Props<CodePage> {
   codes: Array<string>;
 }
 
-class CodePage extends Component {
+class CodePage extends Component<CodePageProps> {
   propsUpdates: Subject<CodePageProps>;
   observable: Observable<any>;
-  subscription: Subscription;
-  props: CodePageProps;
+  subscription?: Subscription;
   state: any;
 
   constructor(props: CodePageProps) {
@@ -108,7 +106,6 @@ class CodePage extends Component {
   }
 
   componentDidMount() {
-    const self = this;
     this.subscription = this.observable.subscribe(codes => {
       if (_.isObject(codes)) {
         this.setState(codes);
@@ -124,7 +121,7 @@ class CodePage extends Component {
   }
 
   componentWillUnmount() {
-    this.subscription.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
   render() {
@@ -153,8 +150,5 @@ class CodePage extends Component {
     );
   }
 }
-// CodePage.propTypes = {
-//   codes: PropTypes.arrayOf(PropTypes.string).isRequired,
-// };
 
 export default CodePage;

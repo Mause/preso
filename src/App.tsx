@@ -1,10 +1,9 @@
 /// <reference path="types/react-presents.d.ts" />
 /// <reference path="types/react-highlight.d.ts" />
 import * as React from 'react';
-import { Component } from 'react';
 import './App.css';
 import 'highlight.js/styles/ocean.css';
-import * as Loader from 'react-loader';
+import Loader from 'react-loader';
 import { Presentation, Slide } from 'react-presents';
 import { Container } from 'bloomer';
 import KnownMount from './KnownMount';
