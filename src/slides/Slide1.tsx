@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import CodePage from '../CodePage';
 import { strip } from '../strip';
 
-const CODES = [
+const CODES: Array<string> = [
   strip`
     def foo():
         return 'world'

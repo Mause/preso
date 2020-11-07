@@ -1,21 +1,29 @@
-import React from 'react';
-import version_url from '../version';
+import * as React from 'react';
+// import version_url from '../version';
 import CodePage from '../CodePage';
 import KnownMount from '../KnownMount';
 import { strip } from '../strip';
 
+declare function require(path: string): string;
+const version_url = require('../version');
+
+interface Slide2State {
+  version: string | null;
+}
+interface Slide2Props extends React.Props<Slide2> {};
+
 class Slide2 extends KnownMount {
-  constructor(props) {
+  state: Slide2State;
+
+  constructor(props: Slide2Props) {
     super(props);
     this.state = { version: null };
     this.initialise();
   }
-  async initialise() {
+  async initialise(): Promise<any> {
     const response = await fetch(version_url);
     let version = await response.text();
-    if (this.mounted) {
-      this.setState({ version: version.trim() });
-    }
+    this.setState({ version: version.trim() });
   }
   render() {
     const codes = [
