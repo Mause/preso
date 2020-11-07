@@ -36,14 +36,6 @@ function make(index: number, code: string): JSX.Element {
   );
 }
 
-// eslint-disable-next-line
-function tap(label: string) {
-  return map(value => {
-    console.log(label, value);
-    return value;
-  });
-}
-
 let idx = 0;
 
 async function getNewValue(originalCode: string) {
