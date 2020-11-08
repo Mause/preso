@@ -9,16 +9,10 @@ import { Container } from 'bloomer';
 import { languagePluginLoader } from './CodePage';
 
 // Automatically load all slides in the Slides folder
-// const slides: Component[] = Array.from(
-//   require.context('./slides/', false, /\.js$/).keys(),
-// )
-//   .map(filename => filename.replace('./', ''))
-//   .map(filename => require(`./slides/${filename}`).default);
-import Slide1 from './slides/Slide1';
-import Slide2 from './slides/Slide2';
-import Slide3 from './slides/Slide3';
-import Slide4 from './slides/Slide4';
-const slides = [Slide1, Slide2, Slide3, Slide4];
+const slides: React.Component[] =
+  Array.from(require.context('./slides/', false, /\.tsx$/).keys())
+    .map(filename => filename.replace('./', ''))
+    .map(filename => require(`./slides/${filename}`).default);
 
 interface AppState {
   ready: Boolean;
