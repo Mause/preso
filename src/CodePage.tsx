@@ -53,22 +53,10 @@ function make(index: number, code: string): JSX.Element {
   );
 }
 
-let idx = 0;
-
 async function getNewValue(originalCode: string) {
   await languagePluginLoader; // be defensive
 
-  const res_var = `result_${idx++}`;
-  let codeA = originalCode.split('\n');
-  let code = [
-    ...codeA.slice(0, codeA.length - 1),
-    `${res_var} = ` + _.last(codeA),
-  ].join('\n');
-  console.log(code);
-
-  await getPyodide().runPythonAsync(code);
-
-  let ovalue = getPyodide().pyimport(res_var);
+  let ovalue = await getPyodide().runPythonAsync(originalCode);
   console.log(ovalue);
   if (ovalue.then) {
     ovalue = await ovalue;
@@ -79,7 +67,7 @@ async function getNewValue(originalCode: string) {
     value = ovalue.toString();
   }
 
-  console.log(code, value);
+  console.log(originalCode, value);
   return value;
 }
 
