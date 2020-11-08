@@ -6,12 +6,17 @@ export default function Slide4() {
   return <CodePage codes={[
     strip`
         import js
-        fetch = js.globals.fetch
-        console = js.globals.console
+        import micropip
 
-        url = 'https://api.portal.energy-tec.com.au/graphql?query={version}'
+        def internal(_):
+          from pydantic import BaseModel
 
-        fetch(url).then(js.Function(lambda res: res.json()))
-        `
+          class Model(BaseModel):
+            string: str
+
+          return Model(string='hello')
+
+        micropip.install('pydantic').then(internal)
+    `
   ]} />;
 }
