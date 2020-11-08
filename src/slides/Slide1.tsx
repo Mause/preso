@@ -11,7 +11,7 @@ export default function Slide1() {
       foo()
       `,
     strip`
-      def intersect(a, b) :
+      def intersect(a, b):
           return list(set(a) & set(b))
   
       intersect([1, 2, 3], [2, 5, 7])
