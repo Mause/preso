@@ -17,6 +17,20 @@ export default function Slide4() {
           return Model(string='hello')
 
         micropip.install('pydantic').then(internal)
+    `,
+    strip`
+      import pandas as pd
+
+      df = pd.DataFrame([
+        {
+          'voters': 5
+        },
+        {
+          'voters': 10
+        }
+      ])
+
+      [df.voters.max(), df.voters.min(), df.voters.mean()]
     `
   ]} />;
 }
