@@ -58,7 +58,7 @@ async function getNewValue(originalCode: string) {
 
   let ovalue = await getPyodide().runPythonAsync(originalCode);
   console.log(ovalue);
-  if (ovalue.then) {
+  if (ovalue && ovalue.then) {
     ovalue = await ovalue;
   }
 
