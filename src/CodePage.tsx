@@ -84,7 +84,10 @@ async function getNewValue(originalCode: string) {
 }
 
 function getNewValueOb(originalCode: string) {
-  return Observable.fromPromise(getNewValue(originalCode));
+  return Observable.fromPromise(getNewValue(originalCode).catch(error => {
+    console.error(error);
+    return error.toString();
+  }));
 }
 
 interface CodePageProps {
