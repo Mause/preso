@@ -9,7 +9,7 @@ export default function Slide3() {
         import json
 
         request = js.XMLHttpRequest.new()
-        request.open('GET', 'https://api.portal.energy-tec.com.au/graphql?query={version}', False)
+        request.open('GET', 'https://jsonip.com', False)
         request.send(None)
 
         [request.status, json.loads(str(request.responseText))]`,
