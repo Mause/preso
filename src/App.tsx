@@ -6,6 +6,7 @@ import 'highlight.js/styles/ocean.css';
 import Loader from 'react-loader';
 import { Presentation, Slide } from 'react-presents';
 import { Container } from 'bloomer';
+import { languagePluginLoader } from './CodePage';
 
 // Automatically load all slides in the Slides folder
 // const slides: Component[] = Array.from(
@@ -30,7 +31,7 @@ class App extends React.Component<{}> {
     this.state = { ready: false };
   }
   async componentDidMount() {
-    await (window as any).pypyjs.ready();
+    await languagePluginLoader;
     this.setState({ ready: true });
   }
 

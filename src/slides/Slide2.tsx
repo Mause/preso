@@ -8,8 +8,8 @@ export default function Slide2() {
         from datetime import date
         date.today().isoformat()`,
     strip`
-        import urlparse
-        repr(urlparse.urlparse('https://parkd.mause.me/index.json'))
+        from urllib.parse import urlparse
+        repr(urlparse('https://parkd.mause.me/index.json'))
         `,
   ]} />;
 }

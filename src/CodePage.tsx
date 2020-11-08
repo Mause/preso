@@ -13,12 +13,29 @@ import {
   catchError,
 } from 'rxjs/operators';
 
-interface PyPyJs {
-  exec(code: string): Promise<any>;
-  get(variable: string): Promise<any>;
+interface Pyodide {
+  pyimport(name: string): any;
+  globals: any;
+
+  autocomplete(path: string): string[];
+  checkABI(ABI_number: number): boolean;
+  loadPackage(names: string[]): Promise<void>;
+  loadedPackages: Record<string, string>;
+  repr(obj: any): string;
+  runPython(code: string): void;
+  runPythonAsync(input: string): Promise<any>;
+  version(): string;
 }
 
-const pypyjs: PyPyJs = (window as any).pypyjs as PyPyJs;
+export const languagePluginLoader: Promise<void> = (window as any).languagePluginLoader;
+
+function getPyodide() {
+  const pyo = (window as any).pyodide as Pyodide;
+
+  console.log("pyodide version: " + pyo.version());
+
+  return pyo;
+}
 
 function padToThree(string: string): string {
   const splitString = string.split('\n');
@@ -39,6 +56,8 @@ function make(index: number, code: string): JSX.Element {
 let idx = 0;
 
 async function getNewValue(originalCode: string) {
+  await languagePluginLoader; // be defensive
+
   const res_var = `result_${idx++}`;
   let codeA = originalCode.split('\n');
   let code = [
@@ -46,8 +65,20 @@ async function getNewValue(originalCode: string) {
     `${res_var} = ` + _.last(codeA),
   ].join('\n');
   console.log(code);
-  await pypyjs.exec(code);
-  const value = JSON.stringify(await pypyjs.get(res_var));
+
+  await getPyodide().runPythonAsync(code);
+
+  let ovalue = getPyodide().pyimport(res_var);
+  console.log(ovalue);
+  if (ovalue.then) {
+    ovalue = await ovalue;
+  }
+
+  let value = JSON.stringify(ovalue)
+  if (!value) {
+    value = ovalue.toString();
+  }
+
   console.log(code, value);
   return value;
 }
