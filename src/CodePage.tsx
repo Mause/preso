@@ -56,7 +56,7 @@ function getNewValueOb(originalCode: string) {
   return Observable.fromPromise(getNewValue(originalCode));
 }
 
-interface CodePageProps extends React.Props<CodePage> {
+interface CodePageProps {
   codes: Array<string>;
 }
 
@@ -82,7 +82,6 @@ class CodePage extends Component<CodePageProps> {
       mergeAll(), // observable array to observables
       mergeAll(), // observables to values
       catchError(error => {
-        debugger;
         console.error(error);
         if (error.trace) {
           console.log(error.trace);
@@ -121,7 +120,7 @@ class CodePage extends Component<CodePageProps> {
       let value = this.state[`code_${idx}`] || '';
       try {
         value = JSON.stringify(JSON.parse(value), undefined, 2);
-      } catch (e) {}
+      } catch (e) { }
       right.push(make(step++, value));
     });
 
