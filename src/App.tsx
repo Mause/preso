@@ -6,7 +6,6 @@ import 'highlight.js/styles/ocean.css';
 import Loader from 'react-loader';
 import { Presentation, Slide } from 'react-presents';
 import { Container } from 'bloomer';
-import KnownMount from './KnownMount';
 
 // Automatically load all slides in the Slides folder
 // const slides: Component[] = Array.from(
@@ -24,19 +23,15 @@ interface AppState {
   ready: Boolean;
 }
 
-class App extends KnownMount<{}> {
+class App extends React.Component<{}> {
   state: AppState;
   constructor(props: {}) {
     super(props);
     this.state = { ready: false };
   }
   async componentDidMount() {
-    super.componentDidMount();
     await (window as any).pypyjs.ready();
-    console.log(this.mounted);
-    if (this.mounted) {
-      this.setState({ ready: true });
-    }
+    this.setState({ ready: true });
   }
 
   render() {
