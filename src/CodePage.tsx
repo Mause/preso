@@ -9,6 +9,7 @@ import { Subject, Observable, Subscription } from 'rxjs';
 import {
   map,
   mergeAll,
+  from,
   distinctUntilChanged,
   catchError,
 } from 'rxjs/operators';
@@ -72,7 +73,7 @@ async function getNewValue(originalCode: string) {
 }
 
 function getNewValueOb(originalCode: string) {
-  return Observable.fromPromise(getNewValue(originalCode).catch(error => {
+  return from(getNewValue(originalCode).catch(error => {
     console.error(error);
     return error.toString();
   }));
