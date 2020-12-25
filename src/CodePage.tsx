@@ -5,11 +5,10 @@ import Highlight from 'react-highlight';
 import { Columns, Column } from 'bloomer';
 import _ from 'underscore';
 import 'bulma/css/bulma.css';
-import { Subject, Observable, Subscription } from 'rxjs';
+import { from, Subject, Observable, Subscription } from 'rxjs';
 import {
   map,
   mergeAll,
-  from,
   distinctUntilChanged,
   catchError,
 } from 'rxjs/operators';
