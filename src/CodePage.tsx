@@ -99,7 +99,7 @@ class CodePage extends Component<CodePageProps> {
       map((codes: Array<string>) =>
         codes
           .map(getNewValueOb)
-          .map((obs, idx) => obs.map(value => ({ [`code_${idx}`]: value }))),
+          .map((obs, idx) => obs.pipe(map(value => ({ [`code_${idx}`]: value })))),
       ),
       mergeAll(), // observable array to observables
       mergeAll(), // observables to values
