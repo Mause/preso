@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "bloomer": "^0.6.3",
-    "bulma": "^0.6.2",
+    "bulma": "^0.9.1",
     "halogen": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
