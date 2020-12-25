@@ -9200,10 +9200,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-highlight@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/react-highlight/-/react-highlight-0.11.1.tgz#d6eccf4f700af1295b30a1daa8f144308ab187ac"
-  integrity sha512-Tu/X1lP7Ve268nWLz9BIXOIwuZBXf8Jurgmcf9IhBHPVG34Jf2XB6gX8eolQQnTlRS+p6YfF+t5gh//z4e0QnQ==
+react-highlight@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/react-highlight/-/react-highlight-0.12.0.tgz#34de986a0bfdf228904d0c269b69538d95b35802"
+  integrity sha512-j04EWbYOFM0PryhF5Vvl0FDa/dD3M6q0Sl+nFN9kTvWQ9hFkfISNNs85+ssL4TSkDM+4pQTpMdxlDRi8yfIxjw==
   dependencies:
     highlight.js "^9.11.0"
 
