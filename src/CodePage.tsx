@@ -5,7 +5,7 @@ import Highlight from 'react-highlight';
 import { Columns, Column } from 'bloomer';
 import _ from 'underscore';
 import 'bulma/css/bulma.css';
-import { Subject, Observable, Subscription } from 'rxjs';
+import { from, Subject, Observable, Subscription } from 'rxjs';
 import {
   map,
   mergeAll,
@@ -72,7 +72,7 @@ async function getNewValue(originalCode: string) {
 }
 
 function getNewValueOb(originalCode: string) {
-  return Observable.fromPromise(getNewValue(originalCode).catch(error => {
+  return from(getNewValue(originalCode).catch(error => {
     console.error(error);
     return error.toString();
   }));
@@ -99,7 +99,7 @@ class CodePage extends Component<CodePageProps> {
       map((codes: Array<string>) =>
         codes
           .map(getNewValueOb)
-          .map((obs, idx) => obs.map(value => ({ [`code_${idx}`]: value }))),
+          .map((obs, idx) => obs.pipe(map(value => ({ [`code_${idx}`]: value })))),
       ),
       mergeAll(), // observable array to observables
       mergeAll(), // observables to values
