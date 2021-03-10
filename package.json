@@ -35,7 +35,7 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/react-loader": "^2.4.2",
-    "@types/underscore": "^1.8.8",
+    "@types/underscore": "^1.11.0",
     "@types/webpack": "^4.41.26",
     "@types/webpack-env": "^1.16.0"
   },
