@@ -24,15 +24,15 @@ interface Pyodide {
   repr(obj: any): string;
   runPython(code: string): void;
   runPythonAsync(input: string): Promise<any>;
-  version(): string;
+  version: string;
 }
 
-export const languagePluginLoader: Promise<void> = (window as any).languagePluginLoader;
+export const languagePluginLoader: Promise<void> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/'});
 
 function getPyodide() {
   const pyo = (window as any).pyodide as Pyodide;
 
-  console.log("pyodide version: " + pyo.version());
+  console.log("pyodide version: " + pyo.version);
 
   return pyo;
 }
@@ -62,10 +62,7 @@ async function getNewValue(originalCode: string) {
     ovalue = await ovalue;
   }
 
-  let value = JSON.stringify(ovalue)
-  if (!value) {
-    value = ovalue.toString();
-  }
+  let value = ovalue.__repr__ ? ovalue.__repr__() : JSON.stringify(ovalue);
 
   console.log(originalCode, value);
   return value;
