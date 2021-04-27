@@ -18,7 +18,7 @@ export default function Slide4() {
 
           return Model(string='hello')
 
-        run(internal)
+        await internal()
     `,
     strip`
       import pandas as pd
