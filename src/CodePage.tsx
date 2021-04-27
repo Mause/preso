@@ -24,7 +24,7 @@ interface Pyodide {
   repr(obj: any): string;
   runPython(code: string): void;
   runPythonAsync(input: string): Promise<any>;
-  version(): string;
+  version: string;
 }
 
 export const languagePluginLoader: Promise<void> = (window as any).languagePluginLoader;
@@ -32,7 +32,7 @@ export const languagePluginLoader: Promise<void> = (window as any).languagePlugi
 function getPyodide() {
   const pyo = (window as any).pyodide as Pyodide;
 
-  console.log("pyodide version: " + pyo.version());
+  console.log("pyodide version: " + pyo.version);
 
   return pyo;
 }
