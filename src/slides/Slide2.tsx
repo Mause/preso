@@ -9,7 +9,7 @@ export default function Slide2() {
         date.today().isoformat()`,
     strip`
         from urllib.parse import urlparse
-        repr(urlparse('https://parkd.mause.me/index.json'))
+        urlparse('https://parkd.mause.me/index.json')
         `,
   ]} />;
 }
