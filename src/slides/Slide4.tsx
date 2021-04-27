@@ -5,20 +5,15 @@ import { strip } from '../strip';
 export default function Slide4() {
   return <CodePage codes={[
     strip`
-        import js
         import micropip
-        from asyncio import run
+        await micropip.install('pydantic')
 
-        def internal():
-          print(await micropip.install('pydantic'))
-          from pydantic import BaseModel
+        from pydantic import BaseModel
 
-          class Model(BaseModel):
-            string: str
+        class Model(BaseModel):
+          string: str
 
-          return Model(string='hello')
-
-        await internal()
+        Model(string='hello')
     `,
     strip`
       import pandas as pd
