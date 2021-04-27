@@ -7,8 +7,10 @@ export default function Slide4() {
     strip`
         import js
         import micropip
+        from asyncio import run
 
-        def internal(_):
+        def internal():
+          print(await micropip.install('pydantic'))
           from pydantic import BaseModel
 
           class Model(BaseModel):
@@ -16,7 +18,7 @@ export default function Slide4() {
 
           return Model(string='hello')
 
-        micropip.install('pydantic').then(internal)
+        run(internal)
     `,
     strip`
       import pandas as pd
