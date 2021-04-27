@@ -62,10 +62,7 @@ async function getNewValue(originalCode: string) {
     ovalue = await ovalue;
   }
 
-  let value = ovalue.__str__();
-  if (!value) {
-    value = JSON.stringify(ovalue);
-  }
+  let value = ovalue.__repr__ ? ovalue.__repr__() : JSON.stringify(ovalue);
 
   console.log(originalCode, value);
   return value;
