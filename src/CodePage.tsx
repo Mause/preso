@@ -62,9 +62,9 @@ async function getNewValue(originalCode: string) {
     ovalue = await ovalue;
   }
 
-  let value = JSON.stringify(ovalue)
+  let value = ovalue.__str__();
   if (!value) {
-    value = ovalue.toString();
+    value = JSON.stringify(ovalue);
   }
 
   console.log(originalCode, value);
