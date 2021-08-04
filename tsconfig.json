@@ -1,54 +1,41 @@
 {
-  "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": [
-      "es6",
-      "dom",
-      "es2015"
-    ],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "skipLibCheck": true,
-    "strictFunctionTypes": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ],
-  "types": [
-    "typePatches",
-    "webpack",
-    "webpack-env"
-  ],
-  "paths": {
-    "*": [
-      "react-presents",
-      "react-presents.d.ts"
-    ]
-  },
-  "include": [
-    "src"
-  ]
+	"compilerOptions": {
+		"outDir": "build/dist",
+		"module": "esnext",
+		"target": "es5",
+		"lib": ["es6", "dom", "es2015"],
+		"sourceMap": true,
+		"allowJs": true,
+		"jsx": "react-jsx",
+		"moduleResolution": "node",
+		"rootDir": "src",
+		"skipLibCheck": true,
+		"strictFunctionTypes": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true
+	},
+	"exclude": [
+		"node_modules",
+		"build",
+		"scripts",
+		"acceptance-tests",
+		"webpack",
+		"jest",
+		"src/setupTests.ts"
+	],
+	"types": ["typePatches", "webpack", "webpack-env"],
+	"paths": {
+		"*": ["react-presents", "react-presents.d.ts"]
+	},
+	"include": ["src"]
 }

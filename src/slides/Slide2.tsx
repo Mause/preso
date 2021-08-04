@@ -3,13 +3,17 @@ import CodePage from '../CodePage';
 import { strip } from '../strip';
 
 export default function Slide2() {
-  return <CodePage codes={[
-    strip`
+	return (
+		<CodePage
+			codes={[
+				strip`
         from datetime import date
         date.today().isoformat()`,
-    strip`
+				strip`
         from urllib.parse import urlparse
         urlparse('https://parkd.mause.me/index.json')
         `,
-  ]} />;
+			]}
+		/>
+	);
 }
