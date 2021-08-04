@@ -9,10 +9,11 @@ import { Container } from 'bloomer';
 import { pyodide } from './CodePage';
 
 // Automatically load all slides in the Slides folder
-const slides: React.Component[] =
-  Array.from(require.context('./slides/', false, /\.tsx$/).keys())
-    .map(filename => filename.replace('./', ''))
-    .map(filename => require(`./slides/${filename}`).default);
+const slides: React.Component[] = Array.from(
+  require.context('./slides/', false, /\.tsx$/).keys(),
+)
+  .map((filename) => filename.replace('./', ''))
+  .map((filename) => require(`./slides/${filename}`).default);
 
 interface AppState {
   ready: Boolean;

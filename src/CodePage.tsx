@@ -27,12 +27,14 @@ interface Pyodide {
   version: string;
 }
 
-export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/'});
+export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({
+  indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/',
+});
 
 async function getPyodide() {
   const pyo = await pyodide;
 
-  console.log("pyodide version: " + pyo.version);
+  console.log('pyodide version: ' + pyo.version);
 
   return pyo;
 }
@@ -67,10 +69,12 @@ async function getNewValue(originalCode: string) {
 }
 
 function getNewValueOb(originalCode: string) {
-  return from(getNewValue(originalCode).catch(error => {
-    console.error(error);
-    return error.toString();
-  }));
+  return from(
+    getNewValue(originalCode).catch((error) => {
+      console.error(error);
+      return error.toString();
+    }),
+  );
 }
 
 interface CodePageProps {
@@ -89,16 +93,18 @@ class CodePage extends Component<CodePageProps> {
     this.propsUpdates = new Subject();
 
     this.observable = this.propsUpdates.pipe(
-      map(props => props.codes),
+      map((props) => props.codes),
       distinctUntilChanged(_.isEqual),
       map((codes: Array<string>) =>
         codes
           .map(getNewValueOb)
-          .map((obs, idx) => obs.pipe(map(value => ({ [`code_${idx}`]: value })))),
+          .map((obs, idx) =>
+            obs.pipe(map((value) => ({ [`code_${idx}`]: value }))),
+          ),
       ),
       mergeAll(), // observable array to observables
       mergeAll(), // observables to values
-      catchError(error => {
+      catchError((error) => {
         console.error(error);
         if (error.trace) {
           console.log(error.trace);
@@ -109,7 +115,7 @@ class CodePage extends Component<CodePageProps> {
   }
 
   componentDidMount() {
-    this.subscription = this.observable.subscribe(codes => {
+    this.subscription = this.observable.subscribe((codes) => {
       if (_.isObject(codes)) {
         this.setState(codes);
       } else {
@@ -137,7 +143,7 @@ class CodePage extends Component<CodePageProps> {
       let value = this.state[`code_${idx}`] || '';
       try {
         value = JSON.stringify(JSON.parse(value), undefined, 2);
-      } catch (e) { }
+      } catch (e) {}
       right.push(make(step++, value));
     });
 
