@@ -6,7 +6,7 @@ import 'highlight.js/styles/ocean.css';
 import Loader from 'react-loader';
 import { Presentation, Slide } from 'react-presents';
 import { Container } from 'bloomer';
-import { languagePluginLoader } from './CodePage';
+import { getPyodide } from './CodePage';
 
 // Automatically load all slides in the Slides folder
 const slides: React.Component[] =
@@ -25,7 +25,7 @@ class App extends React.Component<{}> {
     this.state = { ready: false };
   }
   async componentDidMount() {
-    await languagePluginLoader;
+    getPyodide();
     this.setState({ ready: true });
   }
 
