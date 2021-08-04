@@ -27,10 +27,10 @@ interface Pyodide {
   version: string;
 }
 
-export const languagePluginLoader: Promise<void> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/'});
+export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/'});
 
-function getPyodide() {
-  const pyo = (window as any).pyodide as Pyodide;
+async function getPyodide() {
+  const pyo = await pyodide;
 
   console.log("pyodide version: " + pyo.version);
 
@@ -54,9 +54,7 @@ function make(index: number, code: string): JSX.Element {
 }
 
 async function getNewValue(originalCode: string) {
-  await languagePluginLoader; // be defensive
-
-  let ovalue = await getPyodide().runPythonAsync(originalCode);
+  let ovalue = await (await getPyodide()).runPythonAsync(originalCode);
   console.log(ovalue);
   if (ovalue && ovalue.then) {
     ovalue = await ovalue;
