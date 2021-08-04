@@ -29,10 +29,12 @@ interface Pyodide {
 
 export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/'});
 
-function getPyodide() {
-  console.log("pyodide version: " + pyodide.version);
+async function getPyodide() {
+  const pyo = await pyodide;
 
-  return pyodide;
+  console.log("pyodide version: " + pyo.version);
+
+  return pyo;
 }
 
 function padToThree(string: string): string {
