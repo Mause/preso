@@ -271,19 +271,19 @@ Then add the block below to your `launch.json` file and put it inside the `.vsco
 
 ```json
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Chrome",
-			"type": "chrome",
-			"request": "launch",
-			"url": "http://localhost:3000",
-			"webRoot": "${workspaceRoot}/src",
-			"sourceMapPathOverrides": {
-				"webpack:///src/*": "${webRoot}/*"
-			}
-		}
-	]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceRoot}/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    }
+  ]
 }
 ```
 
@@ -394,9 +394,9 @@ For example:
 import React, { Component } from 'react';
 
 class Button extends Component {
-	render() {
-		// ...
-	}
+  render() {
+    // ...
+  }
 }
 
 export default Button; // Don’t forget to use export default!
@@ -409,9 +409,9 @@ import React, { Component } from 'react';
 import Button from './Button'; // Import a component from another file
 
 class DangerButton extends Component {
-	render() {
-		return <Button color="red" />;
-	}
+  render() {
+    return <Button color="red" />;
+  }
 }
 
 export default DangerButton;
@@ -451,23 +451,23 @@ export { moduleA };
 import React, { Component } from 'react';
 
 class App extends Component {
-	handleClick = () => {
-		import('./moduleA')
-			.then(({ moduleA }) => {
-				// Use moduleA
-			})
-			.catch((err) => {
-				// Handle failure
-			});
-	};
+  handleClick = () => {
+    import('./moduleA')
+      .then(({ moduleA }) => {
+        // Use moduleA
+      })
+      .catch((err) => {
+        // Handle failure
+      });
+  };
 
-	render() {
-		return (
-			<div>
-				<button onClick={this.handleClick}>Load</button>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Load</button>
+      </div>
+    );
+  }
 }
 
 export default App;
@@ -491,7 +491,7 @@ This project setup uses [Webpack](https://webpack.js.org/) for handling all asse
 
 ```css
 .Button {
-	padding: 20px;
+  padding: 20px;
 }
 ```
 
@@ -502,10 +502,10 @@ import React, { Component } from 'react';
 import './Button.css'; // Tell Webpack that Button.js uses these styles
 
 class Button extends Component {
-	render() {
-		// You can use them as regular CSS styles
-		return <div className="Button" />;
-	}
+  render() {
+    // You can use them as regular CSS styles
+    return <div className="Button" />;
+  }
 }
 ```
 
@@ -523,9 +523,9 @@ For example, this:
 
 ```css
 .App {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 ```
 
@@ -533,16 +533,16 @@ becomes this:
 
 ```css
 .App {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 ```
 
@@ -659,8 +659,8 @@ import logo from './logo.png'; // Tell Webpack this JS file uses this image
 console.log(logo); // /logo.84287d09.png
 
 function Header() {
-	// Import result is the URL of your image
-	return <img src={logo} alt="Logo" />;
+  // Import result is the URL of your image
+  return <img src={logo} alt="Logo" />;
 }
 
 export default Header;
@@ -672,7 +672,7 @@ This works in CSS too:
 
 ```css
 .Logo {
-	background-image: url(./logo.png);
+  background-image: url(./logo.png);
 }
 ```
 
@@ -886,10 +886,10 @@ When you load the app in the browser and inspect the `<input>`, you will see its
 
 ```html
 <div>
-	<small>You are running this application in <b>development</b> mode.</small>
-	<form>
-		<input type="hidden" value="abcdef" />
-	</form>
+  <small>You are running this application in <b>development</b> mode.</small>
+  <form>
+    <input type="hidden" value="abcdef" />
+  </form>
 </div>
 ```
 
@@ -901,7 +901,7 @@ Having access to the `NODE_ENV` is also useful for performing actions conditiona
 
 ```js
 if (process.env.NODE_ENV !== 'production') {
-	analytics.disable();
+  analytics.disable();
 }
 ```
 
@@ -1237,10 +1237,10 @@ Since Create React App doesn’t support server rendering, you might be wonderin
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta property="og:title" content="__OG_TITLE__" />
-		<meta property="og:description" content="__OG_DESCRIPTION__" />
-	</head>
+  <head>
+    <meta property="og:title" content="__OG_TITLE__" />
+    <meta property="og:description" content="__OG_DESCRIPTION__" />
+  </head>
 </html>
 ```
 
@@ -1323,8 +1323,8 @@ Jest provides a built-in `expect()` global function for making assertions. A bas
 import sum from './sum';
 
 it('sums numbers', () => {
-	expect(sum(1, 2)).toEqual(3);
-	expect(sum(2, 2)).toEqual(4);
+  expect(sum(1, 2)).toEqual(3);
+  expect(sum(2, 2)).toEqual(4);
 });
 ```
 
@@ -1343,8 +1343,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<App />, div);
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
 });
 ```
 
@@ -1387,7 +1387,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 it('renders without crashing', () => {
-	shallow(<App />);
+  shallow(<App />);
 });
 ```
 
@@ -1403,10 +1403,10 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 it('renders welcome message', () => {
-	const wrapper = shallow(<App />);
-	const welcome = <h2>Welcome to React</h2>;
-	// expect(wrapper.contains(welcome)).to.equal(true);
-	expect(wrapper.contains(welcome)).toEqual(true);
+  const wrapper = shallow(<App />);
+  const welcome = <h2>Welcome to React</h2>;
+  // expect(wrapper.contains(welcome)).to.equal(true);
+  expect(wrapper.contains(welcome)).toEqual(true);
 });
 ```
 
@@ -1462,9 +1462,9 @@ For example:
 
 ```js
 const localStorageMock = {
-	getItem: jest.fn(),
-	setItem: jest.fn(),
-	clear: jest.fn(),
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  clear: jest.fn(),
 };
 global.localStorage = localStorageMock;
 ```
@@ -1507,24 +1507,24 @@ Example package.json:
 
 ```json
 {
-	"name": "your-package",
-	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.{js,jsx}",
-			"!<rootDir>/node_modules/",
-			"!<rootDir>/path/to/dir/"
-		],
-		"coverageThreshold": {
-			"global": {
-				"branches": 90,
-				"functions": 90,
-				"lines": 90,
-				"statements": 90
-			}
-		},
-		"coverageReporters": ["text"],
-		"snapshotSerializers": ["my-serializer-module"]
-	}
+  "name": "your-package",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": ["text"],
+    "snapshotSerializers": ["my-serializer-module"]
+  }
 }
 ```
 
@@ -1975,7 +1975,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(9000);

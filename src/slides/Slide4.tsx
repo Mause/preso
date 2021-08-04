@@ -3,10 +3,10 @@ import CodePage from '../CodePage';
 import { strip } from '../strip';
 
 export default function Slide4() {
-	return (
-		<CodePage
-			codes={[
-				strip`
+  return (
+    <CodePage
+      codes={[
+        strip`
         import micropip
         await micropip.install('pydantic')
 
@@ -17,7 +17,7 @@ export default function Slide4() {
 
         Model(string='hello')
     `,
-				strip`
+        strip`
       import pandas as pd
 
       df = pd.DataFrame([
@@ -31,7 +31,7 @@ export default function Slide4() {
 
       [df.voters.max(), df.voters.min(), df.voters.mean()]
     `,
-			]}
-		/>
-	);
+      ]}
+    />
+  );
 }
