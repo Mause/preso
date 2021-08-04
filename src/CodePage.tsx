@@ -27,7 +27,7 @@ interface Pyodide {
   version: string;
 }
 
-export const languagePluginLoader: Promise<void> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/'});
+export const languagePluginLoader: Promise<void> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/'});
 
 function getPyodide() {
   const pyo = (window as any).pyodide as Pyodide;
