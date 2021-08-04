@@ -27,14 +27,12 @@ interface Pyodide {
   version: string;
 }
 
-export const languagePluginLoader: Promise<void> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/'});
+export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/'});
 
 function getPyodide() {
-  const pyo = (window as any).pyodide as Pyodide;
+  console.log("pyodide version: " + pyodide.version);
 
-  console.log("pyodide version: " + pyo.version);
-
-  return pyo;
+  return pyodide;
 }
 
 function padToThree(string: string): string {
