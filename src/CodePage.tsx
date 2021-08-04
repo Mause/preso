@@ -54,7 +54,7 @@ function make(index: number, code: string): JSX.Element {
 }
 
 async function getNewValue(originalCode: string) {
-  let ovalue = await getPyodide().runPythonAsync(originalCode);
+  let ovalue = await (await getPyodide()).runPythonAsync(originalCode);
   console.log(ovalue);
   if (ovalue && ovalue.then) {
     ovalue = await ovalue;
