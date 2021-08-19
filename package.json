@@ -32,7 +32,7 @@
     "@types/halogen": "^0.2.5",
     "@types/node": "^15.0.2",
     "@types/prop-types": "^15.5.3",
-    "@types/react": "^17.0.5",
+    "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.3",
     "@types/react-loader": "^2.4.2",
     "@types/underscore": "^1.11.2",
