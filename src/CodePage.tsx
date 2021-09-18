@@ -27,9 +27,7 @@ interface Pyodide {
   version: string;
 }
 
-export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({
-  indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/',
-});
+export const pyodide: Promise<Pyodide> = (window as any).loadPyodide();
 
 async function getPyodide() {
   const pyo = await pyodide;
