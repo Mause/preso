@@ -5,6 +5,10 @@ import { strip } from "../strip";
 export default function Slide5() {
     return <CodePage codes={[
         strip`
+        import micropip
+        await micropip.install('cowsay')
+
+        import sys
         from cowsay import cow
         from io import StringIO
 

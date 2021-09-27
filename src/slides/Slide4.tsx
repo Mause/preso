@@ -7,6 +7,9 @@ export default function Slide4() {
     <CodePage
       codes={[
         strip`
+        import micropip
+        await micropip.install('pydantic')
+
         from pydantic import BaseModel
 
         class Model(BaseModel):
