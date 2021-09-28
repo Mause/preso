@@ -6,13 +6,14 @@ import 'highlight.js/styles/ocean.css';
 import Loader from 'react-loader';
 import { Presentation, Slide } from 'react-presents';
 import { Container } from 'bloomer';
-import { languagePluginLoader } from './CodePage';
+import { pyodide } from './CodePage';
 
 // Automatically load all slides in the Slides folder
-const slides: React.Component[] =
-  Array.from(require.context('./slides/', false, /\.tsx$/).keys())
-    .map(filename => filename.replace('./', ''))
-    .map(filename => require(`./slides/${filename}`).default);
+const slides: React.Component[] = Array.from(
+  require.context('./slides/', false, /\.tsx$/).keys(),
+)
+  .map((filename) => filename.replace('./', ''))
+  .map((filename) => require(`./slides/${filename}`).default);
 
 interface AppState {
   ready: Boolean;
@@ -25,7 +26,7 @@ class App extends React.Component<{}> {
     this.state = { ready: false };
   }
   async componentDidMount() {
-    await languagePluginLoader;
+    await pyodide;
     this.setState({ ready: true });
   }
 

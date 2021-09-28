@@ -25,14 +25,17 @@ interface Pyodide {
   runPython(code: string): void;
   runPythonAsync(input: string): Promise<any>;
   version: string;
+  loadPackagesFromImports(code: string, messageCallback: (message: string) => void, errorCallback: (error: Error) => void): Promise<unknown>;
 }
 
-export const languagePluginLoader: Promise<void> = (window as any).loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.17.0/full/'});
+export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({
+  indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/',
+});
 
-function getPyodide() {
-  const pyo = (window as any).pyodide as Pyodide;
+async function getPyodide() {
+  const pyo = await pyodide;
 
-  console.log("pyodide version: " + pyo.version);
+  console.log('pyodide version: ' + pyo.version);
 
   return pyo;
 }
@@ -54,9 +57,14 @@ function make(index: number, code: string): JSX.Element {
 }
 
 async function getNewValue(originalCode: string) {
-  await languagePluginLoader; // be defensive
+  const pyo = await getPyodide();
+  await pyo.loadPackagesFromImports(
+    originalCode,
+    console.log.bind(console),
+    console.error.bind(console)
+  );
 
-  let ovalue = await getPyodide().runPythonAsync(originalCode);
+  let ovalue = await pyo.runPythonAsync(originalCode);
   console.log(ovalue);
   if (ovalue && ovalue.then) {
     ovalue = await ovalue;
@@ -69,10 +77,12 @@ async function getNewValue(originalCode: string) {
 }
 
 function getNewValueOb(originalCode: string) {
-  return from(getNewValue(originalCode).catch(error => {
-    console.error(error);
-    return error.toString();
-  }));
+  return from(
+    getNewValue(originalCode).catch((error) => {
+      console.error(error);
+      return error.toString();
+    }),
+  );
 }
 
 interface CodePageProps {
@@ -91,16 +101,18 @@ class CodePage extends Component<CodePageProps> {
     this.propsUpdates = new Subject();
 
     this.observable = this.propsUpdates.pipe(
-      map(props => props.codes),
+      map((props) => props.codes),
       distinctUntilChanged(_.isEqual),
       map((codes: Array<string>) =>
         codes
           .map(getNewValueOb)
-          .map((obs, idx) => obs.pipe(map(value => ({ [`code_${idx}`]: value })))),
+          .map((obs, idx) =>
+            obs.pipe(map((value) => ({ [`code_${idx}`]: value }))),
+          ),
       ),
       mergeAll(), // observable array to observables
       mergeAll(), // observables to values
-      catchError(error => {
+      catchError((error) => {
         console.error(error);
         if (error.trace) {
           console.log(error.trace);
@@ -111,7 +123,7 @@ class CodePage extends Component<CodePageProps> {
   }
 
   componentDidMount() {
-    this.subscription = this.observable.subscribe(codes => {
+    this.subscription = this.observable.subscribe((codes) => {
       if (_.isObject(codes)) {
         this.setState(codes);
       } else {

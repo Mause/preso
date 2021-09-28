@@ -3,11 +3,7 @@
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
-    "lib": [
-      "es6",
-      "dom",
-      "es2015"
-    ],
+    "lib": ["es6", "dom", "es2015"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react-jsx",
@@ -37,18 +33,9 @@
     "jest",
     "src/setupTests.ts"
   ],
-  "types": [
-    "typePatches",
-    "webpack",
-    "webpack-env"
-  ],
+  "types": ["typePatches", "webpack", "webpack-env"],
   "paths": {
-    "*": [
-      "react-presents",
-      "react-presents.d.ts"
-    ]
+    "*": ["react-presents", "react-presents.d.ts"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
