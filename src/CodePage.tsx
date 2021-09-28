@@ -25,7 +25,11 @@ interface Pyodide {
   runPython(code: string): void;
   runPythonAsync(input: string): Promise<any>;
   version: string;
-  loadPackagesFromImports(code: string, messageCallback: (message: string) => void, errorCallback: (error: Error) => void): Promise<unknown>;
+  loadPackagesFromImports(
+    code: string,
+    messageCallback: (message: string) => void,
+    errorCallback: (error: Error) => void,
+  ): Promise<unknown>;
 }
 
 export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({
@@ -61,7 +65,7 @@ async function getNewValue(originalCode: string) {
   await pyo.loadPackagesFromImports(
     originalCode,
     console.log.bind(console),
-    console.error.bind(console)
+    console.error.bind(console),
   );
 
   let ovalue = await pyo.runPythonAsync(originalCode);
@@ -151,7 +155,7 @@ class CodePage extends Component<CodePageProps> {
       let value = this.state[`code_${idx}`] || '';
       try {
         value = JSON.stringify(JSON.parse(value), undefined, 2);
-      } catch (e) { }
+      } catch (e) {}
       right.push(make(step++, value));
     });
 
