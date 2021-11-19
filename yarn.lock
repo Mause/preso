@@ -2471,10 +2471,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-loader@^2.4.2":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@types/react-loader/-/react-loader-2.4.4.tgz#d6904b9dba3cdce55d97bf0732e0701b3f1c1300"
-  integrity sha512-XH/Bk9wW4tYKZ6CxjXxv/qH7dJb5wHVfLzEcuh0BX6qVOR+lWt+y3NmcUHBWl1JOUkBLbCb4DGWSVI9Uq63Z0Q==
+"@types/react-loader@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@types/react-loader/-/react-loader-2.4.5.tgz#dc3d7d7870683f7349c3740d8872765cfab6e212"
+  integrity sha512-eBtnKxGx/B+z6kSOMiVBYLPZmXLZDVoChSYk57N91HZKB1wSPICHPrgvlhC5j8Y7MCfoYRt4/emRwh2OQIhFrg==
   dependencies:
     "@types/react" "*"
 
