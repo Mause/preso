@@ -2388,10 +2388,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/halogen@^0.2.5":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@types/halogen/-/halogen-0.2.6.tgz#fb60915e63b7044804c1b84e2fd743d516ce1331"
-  integrity sha512-f3eAEhV4RlqIf61buWahaxsu1r3vlNr6dLDRRlm5vyFMIpVf96rDsETtDoE5J6FuOdkKcrGomrXrtYE2B0Ertw==
+"@types/halogen@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@types/halogen/-/halogen-0.2.7.tgz#88917a7a4f47e3eab6685f700f869eff00e434b2"
+  integrity sha512-e70tcKEfbcMQtvm25q+xAoZ3WU2DHGHWKiwFNd0FIGsw8bHpR0OrFx5zvnZGIjFZiA+xoiNieGeEl4hnMx20VQ==
   dependencies:
     "@types/react" "*"
 
