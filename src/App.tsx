@@ -3,7 +3,7 @@
 import * as React from 'react';
 import './App.css';
 import 'highlight.js/styles/ocean.css';
-import Loader from 'react-loader';
+import { Oval } from 'react-loader-spinner';
 import { Presentation, Slide } from 'react-presents';
 import { Container } from 'bloomer';
 import { pyodide } from './CodePage';
@@ -33,11 +33,7 @@ class App extends React.Component<{}> {
   render() {
     return (
       <Container style={{ minHeight: '100%', minWidth: '100%' }}>
-        <Loader
-          loaded={Boolean(this.state.ready)}
-          options={{}}
-          className="spinner"
-        />
+        {this.state.ready ? undefined : <Oval />}
         <Presentation>
           {slides.map((Component, index) => (
             <Slide component={Component} key={index} />
