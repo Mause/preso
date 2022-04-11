@@ -11,7 +11,7 @@ import {
   catchError,
 } from 'rxjs/operators';
 import { Columns } from 'react-bulma-components';
-const pyodidePkg = await import("pyodide/pyodide.js");
+const pyodidePkg = await import('pyodide/pyodide.js');
 
 export const pyodide = pyodidePkg.loadPyodide();
 
