@@ -12,7 +12,9 @@ import {
 } from 'rxjs/operators';
 import { Columns } from 'react-bulma-components';
 
-export const pyodide = import("pyodide/pyodide.js").then(pyodidePkg => pyodidePkg.loadPyodide());
+export const pyodide = import('pyodide/pyodide.js').then((pyodidePkg) =>
+  pyodidePkg.loadPyodide(),
+);
 
 async function getPyodide() {
   const pyo = await pyodide;
