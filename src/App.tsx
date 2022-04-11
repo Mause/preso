@@ -5,8 +5,8 @@ import './App.css';
 import 'highlight.js/styles/ocean.css';
 import { Oval } from 'react-loader-spinner';
 import { Presentation, Slide } from 'react-presents';
-import { Container } from 'bloomer';
 import { pyodide } from './CodePage';
+import { Container } from 'react-bulma-components';
 
 // Automatically load all slides in the Slides folder
 const slides: React.Component[] = Array.from(

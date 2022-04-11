@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { ContentSlide, Step } from 'react-presents';
 import Highlight from 'react-highlight';
-import { Columns, Column } from 'bloomer';
 import _ from 'underscore';
 import 'bulma/css/bulma.css';
 import { from, Subject, Observable, Subscription } from 'rxjs';
@@ -11,6 +10,7 @@ import {
   distinctUntilChanged,
   catchError,
 } from 'rxjs/operators';
+import { Columns } from 'react-bulma-components';
 
 interface Pyodide {
   pyimport(name: string): any;
@@ -161,9 +161,9 @@ class CodePage extends Component<CodePageProps> {
     return (
       <ContentSlide>
         <span style={{ fontSize: '30px' }}>
-          <Columns isCentered className={'is-12'}>
-            <Column isSize={'1/2'}>{left}</Column>
-            <Column isSize={'1/2'}>{right}</Column>
+          <Columns centered={true} className={'is-12'}>
+            <Columns.Column size={'half'}>{left}</Columns.Column>
+            <Columns.Column size={'half'}>{right}</Columns.Column>
           </Columns>
         </span>
       </ContentSlide>
