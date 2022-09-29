@@ -12,28 +12,9 @@ import {
 } from 'rxjs/operators';
 import { Columns } from 'react-bulma-components';
 
-interface Pyodide {
-  pyimport(name: string): any;
-  globals: any;
-
-  autocomplete(path: string): string[];
-  checkABI(ABI_number: number): boolean;
-  loadPackage(names: string[]): Promise<void>;
-  loadedPackages: Record<string, string>;
-  repr(obj: any): string;
-  runPython(code: string): void;
-  runPythonAsync(input: string): Promise<any>;
-  version: string;
-  loadPackagesFromImports(
-    code: string,
-    messageCallback: (message: string) => void,
-    errorCallback: (error: Error) => void,
-  ): Promise<unknown>;
-}
-
-export const pyodide: Promise<Pyodide> = (window as any).loadPyodide({
-  indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/',
-});
+export const pyodide = import('pyodide/pyodide.js').then((pyodidePkg) =>
+  pyodidePkg.loadPyodide(),
+);
 
 async function getPyodide() {
   const pyo = await pyodide;
